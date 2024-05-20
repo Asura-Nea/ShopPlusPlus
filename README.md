@@ -7,10 +7,12 @@ ShopPlusPlusis a dynamic e-commerce web application thatoffersusers an immersive
  Clone the project
  ```
  git clone https://github.com/Asura-Nea/ShopPlusPlus.git
+ cd ShopPlusPlus
  ```
+ 
  Install and run the web app
  ```
- cd bpmn-frontend
+ cd frontend
  npm install
  npm start
  ```
