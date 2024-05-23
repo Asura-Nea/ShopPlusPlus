@@ -18,6 +18,10 @@ ShopPlusPlusis a dynamic e-commerce web application thatoffersusers an immersive
  npm install
  npm start
  ```
+## Sitemap
+ ```
+https://www.gloomaps.com/loNd2v6fhv
+ ```
 
 ## Features
 - **User AccountManagement**: Allow visitors to sign up and log in using their e-mail IDs/mobile numbers and password for simplicity. Adding social logins would be an added plus. After logging in, users should be provided with the following features:
