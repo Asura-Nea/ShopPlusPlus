@@ -5,7 +5,7 @@ ShopPlusPlusis a dynamic e-commerce web application thatoffersusers an immersive
 
 #### IMPORTANT NOTE: This project is hosted on this account as part of the sample capstone projects in the Full-Stack Development Program provided by upGrad KnowledgeHut. Support shall only be provided through official channels and tickets through your PRISM account if you're a registered learner. For everyone else, the project is provided as is for tinkering and exploration only.
 
-##Run Locally
+## Run Locally
  Clone the project
  ```
  git clone https://github.com/Asura-Nea/ShopPlusPlus.git
