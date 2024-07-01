@@ -7,6 +7,7 @@ import { Navbar } from './components/navbar/navbar';
 import AboutUsComponent from './page/aboutUs';
 import Accessories from './page/accessories';
 import ContactUs from './page/ContactUs';
+import Cart from './page/cart';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="accessories" element={<Accessories />} />
           <Route path="aboutus" element={<AboutUsComponent />} />
           <Route path="contactus" element={<ContactUs />} />
+          <Route path="cart" element={<Cart />} />
         </Route>
 
       </Routes>
