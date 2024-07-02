@@ -39,7 +39,7 @@ export const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <Link to="/aboutus" className="btn btn-ghost text-xl">daisyUI </Link>
+                    <Link to="/" className="btn btn-ghost text-xl">ShopPlusPlus </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -90,13 +90,22 @@ export const Navbar = () => {
                         </div>
                     </div>
 
-                    <Link to="/contactus" tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    <div className="dropdown dropdown-end">
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img
+                                    alt="Tailwind CSS Navbar component"
+                                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                            </div>
                         </div>
-                    </Link>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-30 p-2 shadow">
+                            <li><Link to="/profile">Profile</Link></li>
+                            <li><Link to="/tracing">Tracing</Link></li>
+                            <li><Link to="/">Logout</Link></li>
+                        </ul>
+                    </div>
 
 
                     {/* <div className="avatar">

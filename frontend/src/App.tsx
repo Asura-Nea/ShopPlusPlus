@@ -8,6 +8,8 @@ import AboutUsComponent from './page/aboutUs';
 import Accessories from './page/accessories';
 import ContactUs from './page/ContactUs';
 import Cart from './page/cart';
+import Profile from './page/profile';
+import Tracing from './page/tracing';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="aboutus" element={<AboutUsComponent />} />
           <Route path="contactus" element={<ContactUs />} />
           <Route path="cart" element={<Cart />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='tracing' element={<Tracing />} />
         </Route>
 
       </Routes>
