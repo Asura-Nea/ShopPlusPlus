@@ -10,25 +10,30 @@ import ContactUs from './page/ContactUs';
 import Cart from './page/cart';
 import Profile from './page/profile';
 import Tracing from './page/tracing';
+import Footer from './components/footer/footer';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <>
+      <BrowserRouter>
+        <Routes>
 
-        <Route element={<Navbar />}>
-          <Route index element={<Home />} />
-          <Route path="motorcycles" element={<Motorcycles />} />
-          <Route path="accessories" element={<Accessories />} />
-          <Route path="aboutus" element={<AboutUsComponent />} />
-          <Route path="contactus" element={<ContactUs />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path='profile' element={<Profile />} />
-          <Route path='tracing' element={<Tracing />} />
-        </Route>
+          <Route element={<Navbar />}>
+            <Route index element={<Home />} />
+            <Route path="motorcycles" element={<Motorcycles />} />
+            <Route path="accessories" element={<Accessories />} />
+            <Route path="aboutus" element={<AboutUsComponent />} />
+            <Route path="contactus" element={<ContactUs />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path='profile' element={<Profile />} />
+            <Route path='tracing' element={<Tracing />} />
+          </Route>
 
-      </Routes>
-    </BrowserRouter>
+        </Routes>
+
+      </BrowserRouter>
+      <Footer />
+    </>
   );
 }
 
