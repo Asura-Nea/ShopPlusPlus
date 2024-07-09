@@ -123,8 +123,6 @@ export const Navbar = () => {
             </div >
             <Outlet />
 
-
-
         </>
     );
 }

@@ -1,82 +1,24 @@
+/* eslint-disable react/jsx-key */
 import { StarIcon } from '@heroicons/react/20/solid'
-import moo from '../assets/moto.jpg'
+import { useEffect, useState } from "react";
 
 
 
-const reviews = { href: '#', average: 2, totalCount: 117 }
-function classNames(...classes: string[]) {
-    return classes.filter(Boolean).join(' ');
-}
-const products = [
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
+function Motorcycles() {
+    const [motors, setMotors] = useState([]);
 
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
+    useEffect(() => {
+        fetch('http://localhost:5000/motors')
+            .then(res => res.json())
+            .then(data => setMotors(data))
 
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    {
-        id: 1,
-        name: 'Basic Tee',
-        href: '#',
-        imageSrc: moo,
-        imageAlt: "Front of men's Basic Tee in black.",
-        price: '$35',
-        color: 'Black',
-    },
-    // More products...
-]
+            .catch(error => console.error('Error:', error));
+    }, []);
 
-const Motorcycles = () => {
+    const reviews = { href: '#', average: 0, totalCount: 117 }
+    function classNames(...classes) {
+        return classes.filter(Boolean).join(' ');
+    }
     return (
         <>
 
@@ -90,7 +32,8 @@ const Motorcycles = () => {
                     <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all 8 results</h2>
 
                     <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                        {products.map((product) => (
+                        {motors.map((product) => (
+
                             <div className="card bg-base-100 w-100 shadow-xl">
                                 <figure>
                                     <img
@@ -101,13 +44,13 @@ const Motorcycles = () => {
                                 </figure>
                                 <div className="card-body bg-white">
                                     <h1 className="card-title">{product.name}</h1>
-                                    <h2>name</h2>
+                                    <h2>{product.name}</h2>
                                     <div className="flex items-center">
                                         {[0, 1, 2, 3, 4].map((rating) => (
                                             <StarIcon
                                                 key={rating}
                                                 className={classNames(
-                                                    reviews.average > rating ? 'text-blue-900' : 'text-gray-200',
+                                                    product.star > rating ? 'text-blue-900' : 'text-gray-200',
                                                     'h-5 w-5 flex-shrink-0',
                                                 )}
                                                 aria-hidden="true"
