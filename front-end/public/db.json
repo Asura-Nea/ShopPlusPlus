@@ -34,6 +34,42 @@
             "description": "this is a description of the motors",
             "star": 5
         }
+    ],
+
+    "accessories": [
+        {
+            "id": 1,
+            "name": "shirt",
+            "model": "X5",
+            "year": 2019,
+            "price": 800000,
+            "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
+            "imageAlt": "Alt image",
+            "description": "this is a description of the motors",
+            "star": 3
+        },
+        {
+            "id": 2,
+            "name": "pants",
+            "model": "X6",
+            "year": 2020,
+            "price": 10,
+            "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
+            "imageAlt": "Alt image",
+            "description": "this is a description of the motors",
+            "star": 5
+        },
+        {
+            "id": 3,
+            "name": "Audi",
+            "model": "X7",
+            "year": 2021,
+            "price": 120,
+            "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
+            "imageAlt": "Alt image",
+            "description": "this is a description of the motors",
+            "star": 1
+        }
     ]
     
 }
