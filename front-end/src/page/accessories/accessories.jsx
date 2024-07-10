@@ -1,28 +1,26 @@
 import { useEffect, useState } from "react";
 import CardProduct from "../../components/cardProduct/cardProduct";
+import { getAccessoriesData } from "../../api/apiProduct";
 
-function Motorcycles() {
+function Motorcycles(accessoriesData) {
     const [accessories, setAccessoriess] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/accessories')
-            .then(res => res.json())
+        const fetchData = async () => {
+            const Data = await getAccessoriesData(accessoriesData);
+            setAccessoriess(Data);
+        };
 
-            .then(data => {
-                console.log(data);
-                setAccessoriess(data)
-            })
-
-            .catch(error => console.error('Error:', error));
-    }, []);
+        fetchData();
+    }, [accessoriesData]);
 
 
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Motorcycles</h2>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900">Accessories</h2>
                 <div className="flex items-center justify-center">
-                    <h2 className="text-5xl font-bold tracking-tight text-red-600">MOTORCYCLES</h2>
+                    <h2 className="text-5xl font-bold tracking-tight text-red-600">ACCESSORIES</h2>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all {accessories.length} results</h2>
 

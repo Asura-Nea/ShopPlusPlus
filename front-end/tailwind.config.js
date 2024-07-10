@@ -6,7 +6,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'shop-blue': '#4B70F5',
+        'shop-black': '#151515',
+        'button-color': '#3DC2EC'
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

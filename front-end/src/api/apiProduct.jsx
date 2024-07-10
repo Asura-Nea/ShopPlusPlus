@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.REACT_APP_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
 
-console.log(BASE_URL);
+console.log(import.meta.env);
 
 export const getMotorsData = async (motorData) => {
     try {
-        const response = await axios.get(`http://localhost:5000/motors`, motorData);
+        const config = { params: motorData };
+        const response = await axios.get(`${BASE_URL}/motors`, config);
 
         console.log(BASE_URL);
 
@@ -17,4 +18,13 @@ export const getMotorsData = async (motorData) => {
     }
 };
 
-
+export const getAccessoriesData = async (accessoriesData) => {
+    try {
+        const config = { params: accessoriesData };
+        const response = await axios.get(`${BASE_URL}/accessories`, config);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching accessories:", error);
+        throw error;
+    }
+};

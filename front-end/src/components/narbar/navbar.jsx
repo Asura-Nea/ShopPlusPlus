@@ -12,8 +12,8 @@ export const Navbar = () => {
     const closeMenu = () => setIsMenuOpen(false);
     return (
         <>
-            <div className="navbar bg-blue-800">
-                <div className="navbar-start">
+            <div className="navbar bg-shop-blue text-shop-black">
+                <div className="navbar-start ">
                     <div className="dropdown">
                         {/* Trigger button */}
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" onClick={toggleMenu}>
@@ -47,7 +47,7 @@ export const Navbar = () => {
                     {/* ShopPlusPlus Link */}
                     <Link to="/" className="btn btn-ghost text-xl">ShopPlusPlus</Link>
                 </div>
-                <div className="navbar-center hidden lg:flex">
+                <div className="navbar-center hidden lg:flex ">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to="/"> <h1>Home</h1> </Link></li>
                         <li>

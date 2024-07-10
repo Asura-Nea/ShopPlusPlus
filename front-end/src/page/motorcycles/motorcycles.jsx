@@ -6,10 +6,8 @@ function Motorcycles({ motorData }) {
     const [motors, setMotors] = useState([]);
 
     useEffect(() => {
-        console.log('Before fetching motors data'); // Add
         const fetchData = async () => {
             const Data = await getMotorsData(motorData);
-            console.log(Data);
             setMotors(Data);
         };
 
