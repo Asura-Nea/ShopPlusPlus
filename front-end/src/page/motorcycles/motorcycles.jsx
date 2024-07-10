@@ -1,21 +1,21 @@
-/* eslint-disable react/jsx-key */
 import CardProduct from "../../components/cardProduct/cardProduct";
 import { useEffect, useState } from "react";
+import { getMotorsData } from "../../api/apiProduct.jsx";
 
-function Motorcycles() {
+function Motorcycles({ motorData }) {
     const [motors, setMotors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/motors')
-            .then(res => res.json())
+        console.log('Before fetching motors data'); // Add
+        const fetchData = async () => {
+            const Data = await getMotorsData(motorData);
+            console.log(Data);
+            setMotors(Data);
+        };
 
-            .then(data => {
-                console.log(data);
-                setMotors(data)
-            })
+        fetchData();
+    }, [motorData]);
 
-            .catch(error => console.error('Error:', error));
-    }, []);
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
@@ -23,7 +23,7 @@ function Motorcycles() {
                 <div className="flex items-center justify-center">
                     <h2 className="text-5xl font-bold tracking-tight text-red-600">MOTORCYCLES</h2>
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all 8 results</h2>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all {motors.length} results</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {motors.map((product) => (

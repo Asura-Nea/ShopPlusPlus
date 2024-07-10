@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-
 import { useEffect, useState } from "react";
 import CardProduct from "../../components/cardProduct/cardProduct";
 
@@ -26,7 +24,7 @@ function Motorcycles() {
                 <div className="flex items-center justify-center">
                     <h2 className="text-5xl font-bold tracking-tight text-red-600">MOTORCYCLES</h2>
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all 8 results</h2>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all {accessories.length} results</h2>
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                     {accessories.map((product) => (
