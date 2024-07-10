@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server": "json-server --watch ./public/db.json --port 5000"
+    "server": "json-server --watch ./public/db.json --port 5000",
+    "build": "npm run server & vite build"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.4",

@@ -10,7 +10,11 @@ function Motorcycles() {
     useEffect(() => {
         fetch('http://localhost:5000/motors')
             .then(res => res.json())
-            .then(data => setMotors(data))
+
+            .then(data => {
+                console.log(data);
+                setMotors(data)
+            })
 
             .catch(error => console.error('Error:', error));
     }, []);
