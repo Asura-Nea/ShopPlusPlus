@@ -19,7 +19,7 @@ function Motorcycles({ motorData }) {
             <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-0 lg:max-w-7xl lg:px-8">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">Motorcycles</h2>
                 <div className="flex items-center justify-center">
-                    <h2 className="text-5xl font-bold tracking-tight text-red-600">MOTORCYCLES</h2>
+                    <h2 className="text-5xl font-bold tracking-tight text-header-font">MOTORCYCLES</h2>
                 </div>
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">show all {motors.length} results</h2>
 

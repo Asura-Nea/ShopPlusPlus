@@ -16,7 +16,7 @@ const CardProduct = ({ imageAlt, imageSrc, name, price, star, model }) => {
                     alt={imageAlt}
                 />
             </figure>
-            <div className="card-body bg-white">
+            <div className="card-body bg-bg-card">
                 <h1 className="card-title">{model}</h1>
                 <h2>{name}</h2>
                 <div className="flex items-center">

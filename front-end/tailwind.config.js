@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -8,10 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        'shop-blue': '#4B70F5',
-        'shop-black': '#151515',
+        'shop-blue': '#005C78',
+        'shop-black': '#FFFFFF',
+        'header-font': '#005C78',
+        'bg-card': '#F3F7EC',
         'button-color': '#3DC2EC'
-      }
+      },
     },
   },
   plugins: [
