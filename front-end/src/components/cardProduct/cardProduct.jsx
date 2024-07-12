@@ -8,8 +8,9 @@ function classNames(...classes) {
 
 const CardProduct = ({ imageAlt, imageSrc, name, price, star, model }) => {
 
+
     return (
-        <div className="card bg-base-100 w-100 shadow-xl">
+        <div className="card bg-base-100 w-100 shadow-xl text-card-font">
             <figure>
                 <img
                     src={imageSrc}
@@ -33,8 +34,12 @@ const CardProduct = ({ imageAlt, imageSrc, name, price, star, model }) => {
                 </div>
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
                 <p>{price}</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                <div className="card-actions justify-between">
+                    <svg role="button" className="w-10 h-12 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
+                    </svg>
+
+                    <button className="btn btn-primary bg-button-color w-50 h-10">Buy Now</button>
                 </div>
             </div>
         </div>

@@ -28,3 +28,5 @@ export const getAccessoriesData = async (accessoriesData) => {
         throw error;
     }
 };
+
+
