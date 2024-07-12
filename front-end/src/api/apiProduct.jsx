@@ -5,6 +5,7 @@ const BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
 console.log(import.meta.env);
 
 export const getMotorsData = async (motorData) => {
+    console.log("this is motor Date :  " + motorData);
     try {
         const config = { params: motorData };
         const response = await axios.get(`${BASE_URL}/motors`, config);
