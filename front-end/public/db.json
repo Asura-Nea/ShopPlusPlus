@@ -121,8 +121,8 @@
       "name": "BMW",
       "price": 800000,
       "model": "X5",
-      "autocartId": 3,
-      "quantity": 2
+      "autocartId": 1,
+      "quantity": 7
     },
     {
       "id": "2",
@@ -131,8 +131,8 @@
       "name": "pants",
       "price": 10,
       "model": "X6",
-      "autocartId": 3,
-      "quantity": 2
+      "autocartId": 2,
+      "quantity": 1
     },
     {
       "id": "3",
@@ -142,7 +142,7 @@
       "price": 120,
       "model": "X7",
       "autocartId": 3,
-      "quantity": 1
+      "quantity": 5
     },
     {
       "id": "4",
@@ -152,16 +152,6 @@
       "price": 120,
       "model": "X7",
       "autocartId": 4,
-      "quantity": 1
-    },
-    {
-      "id": "7",
-      "imageAlt": "Alt image",
-      "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
-      "name": "Audi",
-      "price": 120,
-      "model": "X7",
-      "autocartId": 5,
       "quantity": 1
     }
   ]

@@ -11,7 +11,7 @@ function classNames(...classes) {
 }
 
 
-
+const quantity = 1;
 // Function to add a new card product
 const addCardProduct = async (newCard) => {
 
@@ -22,20 +22,23 @@ const addCardProduct = async (newCard) => {
     console.log(newCard.id);
     const cartId = response.data.length;
     const autocartId = cartId + 1;
-    const quantity = 1;
-    const fullProductDetails = {
-        ...newCard,
-        autocartId,
-        quantity,
-    };
+
+
+
 
     try {
         if (checkId) {
-            fullProductDetails.quantity += 1;
-            fullProductDetails.autocartId -= 1;
-            const response = await axios.put(`http://localhost:5001/cart/${newCard.id}`, fullProductDetails);
+            const newCard = { ...checkId, quantity: checkId.quantity };
+            console.log(`Product with ID ${newCard.quantity} already exists in the cart`);
+            newCard.quantity += 1;
+            const response = await axios.put(`http://localhost:5001/cart/${newCard.id}`, newCard);
             console.log(response.data);
         } else {
+            const fullProductDetails = {
+                ...newCard,
+                autocartId,
+                quantity,
+            };
             const response = await axios.post('http://localhost:5001/cart', fullProductDetails);
             console.log(response.data);
         }
