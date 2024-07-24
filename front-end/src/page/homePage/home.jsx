@@ -1,9 +1,16 @@
 import motor from "../../assets/111.png";
 import "./homePage.css";
 
+
+// Assuming this is inside an async function
+const res = await fetch('http://localhost:3000');
+const data = await res.json(); // Wait for the Promise to resolve
+console.log(data);
+
 const Home = () => {
     return (
         <>
+            alert(repo);
             <div
                 className="hero min-h-screen"
                 style={{ backgroundImage: `url(${motor})` }}>
