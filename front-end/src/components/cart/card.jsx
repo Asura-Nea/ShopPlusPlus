@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom"
-import { getCartData } from "../../api/apiCart"
+// import { getCartData } from "../../api/apiCart"
 
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import { useCart } from "../../api/addtocart";
 
-function Cart({ cartData }) {
-    const [cart, setCart] = useState([]);
+function Cart() {
+    const { cart } = useCart();
+    // const [cart, setCart] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const Data = await getCartData(cartData);
-            setCart(Data);
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const Data = await getCartData(cartData);
+    //         setCart(Data);
+    //     };
 
-        fetchData();
-    }, [cartData]);
+    //     fetchData();
+    // }, [cartData]);
 
 
 

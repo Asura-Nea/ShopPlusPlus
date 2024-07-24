@@ -32,6 +32,17 @@
       "imageAlt": "Alt image",
       "description": "this is a description of the motors",
       "star": 5
+    },
+    {
+      "id": "4",
+      "name": "Audi",
+      "model": "X7",
+      "year": 2021,
+      "price": 120,
+      "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
+      "imageAlt": "Alt image",
+      "description": "this is a description of the motors",
+      "star": 1
     }
   ],
   "accessories": [
@@ -122,27 +133,27 @@
       "price": 800000,
       "model": "X5",
       "autocartId": 1,
-      "quantity": 7
+      "quantity": 12
     },
     {
       "id": "2",
       "imageAlt": "Alt image",
       "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
-      "name": "pants",
-      "price": 10,
+      "name": "Mercedes",
+      "price": 900000,
       "model": "X6",
       "autocartId": 2,
-      "quantity": 1
+      "quantity": 15
     },
     {
       "id": "3",
       "imageAlt": "Alt image",
       "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
       "name": "Audi",
-      "price": 120,
+      "price": 1000000,
       "model": "X7",
       "autocartId": 3,
-      "quantity": 5
+      "quantity": 14
     },
     {
       "id": "4",
@@ -152,7 +163,7 @@
       "price": 120,
       "model": "X7",
       "autocartId": 4,
-      "quantity": 1
+      "quantity": 12
     }
   ]
 }

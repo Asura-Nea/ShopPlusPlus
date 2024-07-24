@@ -7,30 +7,32 @@ import { Navbar } from './components/narbar/navbar.jsx';
 import AboutUs from './page/aboutUs/aboutUs.jsx';
 import Accessories from './page/accessories/accessories.jsx';
 import ContactUs from './page/contactUs/contactUs.jsx';
-// import Cart from './page/cart';
-// import Profile from './page/profile';
-// import Tracing from './page/tracing';
+import Cart from './page/cart/cartDetail.jsx';
+import Profile from './page/profile/profile.jsx';
+import Tracing from './page/tracing/tracking.jsx';
 import Footer from './components/footer/footer';
+import { CartProvider } from './api/addtocart.jsx';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
+        <CartProvider>
+          <Routes>
 
-          <Route element={<Navbar />}>
-            <Route index element={<Home />} />
-            <Route path="motorcycles" element={<Motorcycles />} />
-            <Route path="accessories" element={<Accessories />} />
-            <Route path="aboutus" element={<AboutUs />} />
-            <Route path="contactus" element={<ContactUs />} />
-            {/* <Route path="cart" element={<Cart />} />
-            <Route path='profile' element={<Profile />} />
-            <Route path='tracing' element={<Tracing />} /> */}
-          </Route>
+            <Route element={<Navbar />}>
+              <Route index element={<Home />} />
+              <Route path="motorcycles" element={<Motorcycles />} />
+              <Route path="accessories" element={<Accessories />} />
+              <Route path="aboutus" element={<AboutUs />} />
+              <Route path="contactus" element={<ContactUs />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path='profile' element={<Profile />} />
+              <Route path='tracing' element={<Tracing />} />
+            </Route>
 
-        </Routes>
-
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
       <Footer />
     </>

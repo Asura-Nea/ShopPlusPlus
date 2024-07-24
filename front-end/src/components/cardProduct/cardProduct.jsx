@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import { StarIcon } from '@heroicons/react/20/solid'
+import { useCart } from "../../api/addtocart";
 // import { useEffect, useState } from "react";
-import axios from 'axios';
+
 
 
 
@@ -11,45 +12,47 @@ function classNames(...classes) {
 }
 
 
-const quantity = 1;
 // Function to add a new card product
-const addCardProduct = async (newCard) => {
+// const addCardProduct = async (newCard) => {
 
 
-    const response = await axios.get('http://localhost:5001/cart');
+//     // const response = await axios.get('http://localhost:5001/cart');
 
-    const checkId = response.data.find((item) => item.id === newCard.id);
-    console.log(newCard.id);
-    const cartId = response.data.length;
-    const autocartId = cartId + 1;
-
-
+//     // const checkId = response.data.find((item) => item.id === newCard.id);
+//     // console.log(newCard.id);
+//     // const cartId = response.data.length;
+//     // const autocartId = cartId + 1;
 
 
-    try {
-        if (checkId) {
-            const newCard = { ...checkId, quantity: checkId.quantity };
-            console.log(`Product with ID ${newCard.quantity} already exists in the cart`);
-            newCard.quantity += 1;
-            const response = await axios.put(`http://localhost:5001/cart/${newCard.id}`, newCard);
-            console.log(response.data);
-        } else {
-            const fullProductDetails = {
-                ...newCard,
-                autocartId,
-                quantity,
-            };
-            const response = await axios.post('http://localhost:5001/cart', fullProductDetails);
-            console.log(response.data);
-        }
-    } catch (error) {
-        console.error(`Error adding card product: ${error}`);
-    }
-};
+
+
+//     // try {
+//     //     if (checkId) {
+//     //         const newCard = { ...checkId, quantity: checkId.quantity };
+//     //         console.log(`Product with ID ${newCard.quantity} already exists in the cart`);
+//     //         newCard.quantity += 1;
+//     //         const response = await axios.put(`http://localhost:5001/cart/${newCard.id}`, newCard);
+//     //         console.log(response.data);
+//     //     } else {
+//     //         const fullProductDetails = {
+//     //             ...newCard,
+//     //             autocartId,
+//     //             quantity,
+//     //         };
+//     //         const response = await axios.post('http://localhost:5001/cart', fullProductDetails);
+//     //         console.log(response.data);
+//     //     }
+//     // } catch (error) {
+//     //     console.error(`Error adding card product: ${error}`);
+//     // }
+// };
 
 
 const CardProduct = ({ id, imageAlt, imageSrc, name, price, star, model }) => {
-
+    const { addToCart } = useCart();
+    const handleAddToCart = () => {
+        addToCart({ id, imageAlt, imageSrc, name, price, model });
+    };
 
     console.log(`Rendering product with name: ${id}`);
     return (
@@ -78,7 +81,7 @@ const CardProduct = ({ id, imageAlt, imageSrc, name, price, star, model }) => {
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
                 <p>{price}</p>
                 <div className="card-actions justify-between">
-                    <svg onClick={() => addCardProduct({ id, imageAlt, imageSrc, name, price, model })} role="button" className="w-10 h-12 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <svg onClick={() => handleAddToCart({ id, imageAlt, imageSrc, name, price, model })} role="button" className="w-10 h-12 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7h-1M8 7h-.688M13 5v4m-2-2h4" />
                     </svg>
 

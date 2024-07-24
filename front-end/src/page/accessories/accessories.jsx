@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CardProduct from "../../components/cardProduct/cardProduct";
 import { getAccessoriesData } from "../../api/apiProduct";
 
-function Motorcycles(accessoriesData) {
+function Accessories(accessoriesData) {
     const [accessories, setAccessoriess] = useState([]);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function Motorcycles(accessoriesData) {
                     {accessories.map((product) => (
                         <CardProduct
                             id={product.id}
-                            key={product._id}
+                            key={product.id}
                             imageSrc={product.imageSrc}
                             imageAlt={product.imageAlt}
                             name={product.name}
@@ -43,4 +43,4 @@ function Motorcycles(accessoriesData) {
     );
 }
 
-export default Motorcycles;
+export default Accessories;
