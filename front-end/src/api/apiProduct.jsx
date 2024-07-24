@@ -7,12 +7,14 @@ console.log(import.meta.env);
 export const getMotorsData = async (motorData) => {
     console.log("this is motor Date :  " + motorData);
     try {
-        const config = { params: motorData };
-        const response = await axios.get(`${BASE_URL}/motors`, config);
+        // const config = { params: motorData };
+        // const response = await axios.get(`${BASE_URL}/motors`, config);
+        const res = await fetch(`${BASE_URL}/motors`);
+        const data = await res.json(); // Wait for the Promise to resolve
 
         console.log(BASE_URL);
 
-        return response.data;
+        return data;
     } catch (error) {
         console.error("Error fetching motors:", error);
         throw error;
