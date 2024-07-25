@@ -12,9 +12,15 @@ ShopPlusPlusis a dynamic e-commerce web application thatoffersusers an immersive
  cd ShopPlusPlus
  ```
  
- Install and run the web app
+ Install and run the front-end
  ```
- cd frontend
+ cd front-end
+ npm install
+ npm run dev
+ ```
+ Install and run the back-end
+ ```
+ cd back-end
  npm install
  npm start
  ```
