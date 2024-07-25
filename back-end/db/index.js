@@ -2,8 +2,9 @@ import mongoose from "mongoose";
 
 const connectToDB = async () => {
     try {
+        const connection = process.env.DB_STRING;
         mongoose.connect
-            (`mongodb+srv://test:kzXiEeOujJsMlGpU@shopplusplus.mmdrgwt.mongodb.net/?retryWrites=true&w=majority&appName=shopplusplus`,
+            (`${connection}`,
                 {
                     useNewUrlParser: true,
                     useUnifiedTopology: true,

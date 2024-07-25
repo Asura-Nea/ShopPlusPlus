@@ -1,9 +1,42 @@
 import express from 'express';
 import cors from 'cors';
 import connectToDB from './db/index.js';
+import 'dotenv/config'
+import mongoose from 'mongoose';
 
 
 const app = express();
+app.use(express.json());
+
+const motorsSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    model: String,
+    year: Number,
+    price: Number,
+    imageSrc: String,
+    imageAlt: String,
+    description: String,
+    star: Number
+});
+const Motors = mongoose.model('motors', motorsSchema);
+
+
+const accessoriesSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    model: String,
+    year: Number,
+    price: Number,
+    imageSrc: String,
+    imageAlt: String,
+    description: String,
+    star: Number
+});
+
+const Accessories = mongoose.model('accessories', accessoriesSchema);
+
+
 app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.get('/', (req, res) => {
@@ -11,10 +44,28 @@ app.get('/', (req, res) => {
     res.status(200).send({ success: true });
 })
 
-app.get('/motors', (req, res) => {
-    console.log('motor');
-    res.status(200).send(motor);
-})
+app.get('/motors', async (req, res) => {
+    try {
+        console.log('motor');
+        const motors = await Motors.find({}).exec();
+        res.send(motors);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
+app.get('/accessories', async (req, res) => {
+    try {
+        console.log('accessories');
+        const accessories = await Accessories.find({}).exec();
+        res.send(accessories);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+    }
+});
+
 
 Promise.all([connectToDB()])
     .then(() =>
@@ -24,40 +75,3 @@ Promise.all([connectToDB()])
     .catch((error) => {
         console.log(`MongoDB connection error: ${error}`);
     });
-
-const motor =
-    [
-        {
-            "id": "1",
-            "name": "BMW",
-            "model": "X5",
-            "year": 2019,
-            "price": 800000,
-            "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
-            "imageAlt": "Alt image",
-            "description": "this is a description of the motors",
-            "star": 4
-        },
-        {
-            "id": "2",
-            "name": "Mercedes",
-            "model": "X5",
-            "year": 2019,
-            "price": 800000,
-            "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
-            "imageAlt": "Alt image",
-            "description": "this is a description of the motors",
-            "star": 4
-        },
-        {
-            "id": "3",
-            "name": "Audi",
-            "model": "X5",
-            "year": 2019,
-            "price": 800000,
-            "imageSrc": "https://c.pxhere.com/photos/89/03/motorcycles_race_helmets_pilots_competition_sport_extreme_speed-533986.jpg!d",
-            "imageAlt": "Alt image",
-            "description": "this is a description of the motors",
-            "star": 4
-        }
-    ]
