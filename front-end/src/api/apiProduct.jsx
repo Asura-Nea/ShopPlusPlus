@@ -13,7 +13,7 @@ export const getMotorsData = async (motorData) => {
         const data = await res.json(); // Wait for the Promise to resolve
 
         console.log(BASE_URL);
-
+        console.log(data);
         return data;
     } catch (error) {
         console.error("Error fetching motors:", error);
