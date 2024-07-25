@@ -14,7 +14,7 @@ const Profile = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-30 p-2 shadow">
                 <li><Link to="/profile">Profile</Link></li>
                 <li><Link to="/tracing">Tracing</Link></li>
-                <li><Link to="/">Logout</Link></li>
+                <li><Link to="/login">Logout</Link></li>
             </ul>
         </div>
     )

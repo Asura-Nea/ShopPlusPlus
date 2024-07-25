@@ -10,7 +10,6 @@ console.log(data);
 const Home = () => {
     return (
         <>
-            alert(repo);
             <div
                 className="hero min-h-screen"
                 style={{ backgroundImage: `url(${motor})` }}>
