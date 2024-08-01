@@ -1,5 +1,6 @@
 
 import panda from "../../assets/cute-panda-hacker.avif";
+import tail from "../../assets/Tailwind.png";
 
 const people = [
     {
@@ -7,7 +8,20 @@ const people = [
         role: 'Co-Founder / CEO',
         imageUrl: panda,
     },
-    // More people...
+    {
+        name: 'Asura',
+        role: 'Co-Founder / CTO',
+        imageUrl: panda,
+    }, {
+        name: 'Asura',
+        role: 'Director of Product ',
+        imageUrl: panda,
+    },
+    {
+        name: 'Tailwind',
+        role: 'Designer',
+        imageUrl: tail,
+    },
 ]
 
 export default function Example() {

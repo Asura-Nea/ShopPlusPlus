@@ -57,13 +57,13 @@ const CardProduct = ({ id, imageAlt, imageSrc, name, price, star, model }) => {
     console.log(`Rendering product with name: ${id}`);
     return (
         <div key={id} className="card bg-base-100 w-100 shadow-xl text-card-font">
-            <figure>
+            <figure className="h-2/4">
                 <img
                     src={imageSrc}
                     alt={imageAlt}
                 />
             </figure>
-            <div className="card-body bg-bg-card">
+            <div className="card-body bg-white">
                 <h1 className="card-title">{model}</h1>
                 <h2>{name}</h2>
                 <div className="flex items-center">

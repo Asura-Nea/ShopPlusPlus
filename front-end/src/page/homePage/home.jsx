@@ -1,4 +1,5 @@
 import motor from "../../assets/111.png";
+import bmw from "../../assets/bmw.jpeg";
 import "./homePage.css";
 
 
@@ -10,33 +11,54 @@ console.log(data);
 const Home = () => {
     return (
         <>
-            <div
-                className="hero min-h-screen"
-                style={{ backgroundImage: `url(${motor})` }}>
-                <div className="hero-overlay bg-opacity-50"></div>
-                <div className="hero-content text-neutral-content text-center">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Welcome to Shop Plus Plus</h1>
-                        <p className="mb-5">
-                            Shop Plus Plus Providing reliable serive since 1992
-                        </p>
-                        <button className="btn btn-primary">Get Started</button>
+            <section className="mt-24 mx-auto max-w-screen-xl pb-12 px-4 items-center lg:flex md:px-8">
+                <div className="space-y-4 flex-1 sm:text-center lg:text-left">
+                    <h1 className="text-white font-bold text-4xl xl:text-5xl">
+                        One page Template for
+                        <span className="text-indigo-400"> Digital agency</span>
+                    </h1>
+                    <p className="text-gray-300 max-w-xl leading-relaxed sm:mx-auto lg:ml-0">
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum
+                    </p>
+                    <div className="pt-10 items-center justify-center space-y-3 sm:space-x-6 sm:space-y-0 sm:flex lg:justify-start">
+                        <a href="javascript:void(0)" className="px-7 py-3 w-full bg-white text-gray-800 text-center rounded-md shadow-md block sm:w-auto">
+                            Get started
+                        </a>
+                        <a href="javascript:void(0)" className="px-7 py-3 w-full bg-gray-700 text-gray-200 text-center rounded-md block sm:w-auto">
+                            Try it out
+                        </a>
                     </div>
                 </div>
-            </div>
-            <div
-                className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-                aria-hidden="true"
-            >
-                <div
-                    className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
-                    style={{
-                        clipPath:
-                            'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-                    }}
-                />
-            </div>
-
+                <div className="flex-1 text-center mt-7 lg:mt-0 lg:ml-3">
+                    <img src={motor} className="w-full mx-auto sm:w-10/12  lg:w-full" />
+                </div>
+            </section>
+            <section className="py-14 bg-white">
+                <div className="max-w-screen-xl mx-auto md:px-8">
+                    <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
+                        <div className="flex-1 sm:hidden lg:block">
+                            <img src={bmw} className="md:max-w-lg sm:rounded-lg" alt="" />
+                        </div>
+                        <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
+                            <h3 className="text-indigo-600 font-semibold">
+                                Professional services
+                            </h3>
+                            <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                                Build your SaaS solution with help from our experts
+                            </p>
+                            <p className="mt-3 text-gray-600">
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum, sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium
+                            </p>
+                            <a href="javascript:void(0)" className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-indigo-500 duration-150 font-medium">
+                                Learn more
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
+                                    <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </>
     )
