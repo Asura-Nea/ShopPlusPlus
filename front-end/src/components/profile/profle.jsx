@@ -1,3 +1,4 @@
+import profile from "../../assets/11123.jpeg";
 import { Link } from "react-router-dom";
 const Profile = () => {
     return (
@@ -6,7 +7,7 @@ const Profile = () => {
                 <div className="w-10 rounded-full">
                     <img
                         alt="Tailwind CSS Navbar component"
-                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                        src={profile} />
                 </div>
             </div>
             <ul
