@@ -9,7 +9,7 @@ export const getMotorsData = async (motorData) => {
     try {
         // const config = { params: motorData };
         // const response = await axios.get(`${BASE_URL}/motors`, config);
-        const res = await fetch(`${BASE_URL}/motors`);
+        const res = await fetch(`${BASE_URL}/product/motors`);
         const data = await res.json(); // Wait for the Promise to resolve
 
         console.log(BASE_URL);
@@ -24,7 +24,7 @@ export const getMotorsData = async (motorData) => {
 export const getAccessoriesData = async (accessoriesData) => {
     try {
         const config = { params: accessoriesData };
-        const response = await axios.get(`${BASE_URL}/accessories`, config);
+        const response = await axios.get(`${BASE_URL}/product/accessories`, config);
         return response.data;
     } catch (error) {
         console.error("Error fetching accessories:", error);

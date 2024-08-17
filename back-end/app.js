@@ -3,6 +3,7 @@ import cors from 'cors';
 import connectToDB from './db/index.js';
 import 'dotenv/config'
 import mongoose from 'mongoose';
+import product from './routes/product/index.js';
 
 
 const app = express();
@@ -20,35 +21,6 @@ const cartsSchema = new mongoose.Schema({
 });
 const Carts = mongoose.model('carts', cartsSchema);
 
-const motorsSchema = new mongoose.Schema({
-    id: String,
-    name: String,
-    model: String,
-    year: Number,
-    price: Number,
-    imageSrc: String,
-    imageAlt: String,
-    description: String,
-    star: Number
-});
-const Motors = mongoose.model('motors', motorsSchema);
-
-
-const accessoriesSchema = new mongoose.Schema({
-    id: String,
-    name: String,
-    model: String,
-    year: Number,
-    price: Number,
-    imageSrc: String,
-    imageAlt: String,
-    description: String,
-    star: Number
-});
-
-const Accessories = mongoose.model('accessories', accessoriesSchema);
-
-
 app.use(cors({ origin: 'http://localhost:5173' }));
 
 app.get('/', (req, res) => {
@@ -56,27 +28,6 @@ app.get('/', (req, res) => {
     res.status(200).send({ success: true });
 })
 
-app.get('/motors', async (req, res) => {
-    try {
-        console.log('motor');
-        const motors = await Motors.find({}).exec();
-        res.send(motors);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
-    }
-});
-
-app.get('/accessories', async (req, res) => {
-    try {
-        console.log('accessories');
-        const accessories = await Accessories.find({}).exec();
-        res.send(accessories);
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server error');
-    }
-});
 
 app.get('/carts', async (req, res) => {
     try {
@@ -141,7 +92,7 @@ app.put('/carts/:cartId', async (req, res) => {
     }
 });
 
-
+app.use('/product', product);
 
 Promise.all([connectToDB()])
     .then(() =>

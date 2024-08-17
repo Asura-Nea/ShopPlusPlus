@@ -1,18 +1,34 @@
 import { Link } from "react-router-dom"
-// import { getCartData } from "../../api/apiCart"
-
-// import { useEffect, useState } from "react";
 import { useCart } from "../../api/addtocart";
+import { useState, useRef, useEffect } from "react";
 
 function Cart() {
     const { cart } = useCart();
-
     const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
-    console.log("Total Quantity: ", totalQuantity);
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+        <div className="dropdown dropdown-end" ref={dropdownRef}>
+            <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle"
+                onClick={() => setIsOpen(!isOpen)}
+            >
                 <div className="indicator">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -29,17 +45,21 @@ function Cart() {
                     <span className="badge badge-sm indicator-item">{totalQuantity}</span>
                 </div>
             </div>
-            <div
-                tabIndex={0}
-                className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
-                <div className="card-body">
-                    <span className="text-lg font-bold">{totalQuantity} Items</span>
-                    <span className="text-info">Subtotal: $999</span>
-
-                    <Link to="/cart" tabIndex={0} role="button" className="btn btn-primary btn-block">View cart</Link>
-
+            {isOpen && (
+                <div className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
+                    <div className="card-body">
+                        <span className="text-lg font-bold">{totalQuantity} Items</span>
+                        <span className="text-info">Subtotal: $999</span>
+                        <Link
+                            to="/cart"
+                            className="btn btn-primary btn-block"
+                            onClick={() => setIsOpen(false)}
+                        >
+                            View cart
+                        </Link>
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     )
 }
