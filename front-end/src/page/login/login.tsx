@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { login } from "../../api/login";
 
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
+
 export default function Example() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent default form submission
+        try {
+            const response = await login(email, password);
+            console.log(response); // Handle successful login, e.g., navigate to another page
+        } catch (error) {
+            console.error('Login failed:', error); // Handle login failure
+        }
+    };
     return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-white">
@@ -30,7 +31,7 @@ export default function Example() {
                 </div>
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form action="#" method="POST" className="space-y-6">
+                    <form onSubmit={handleSubmit} action="#" method="POST" className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 Email address
@@ -42,6 +43,8 @@ export default function Example() {
                                     type="email"
                                     required
                                     autoComplete="email"
+                                    value={email} // Set the input value to state
+                                    onChange={(e) => setEmail(e.target.value)} //
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
@@ -65,6 +68,8 @@ export default function Example() {
                                     type="password"
                                     required
                                     autoComplete="current-password"
+                                    value={password} // Set the input value to state
+                                    onChange={(e) => setPassword(e.target.value)}
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </div>
@@ -82,7 +87,7 @@ export default function Example() {
 
                     <p className="mt-10 text-center text-sm text-gray-500">
                         Not a member?{' '}
-                        <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                        <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                             Create account
                         </a>
                     </p>

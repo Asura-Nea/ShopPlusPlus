@@ -33,16 +33,14 @@ export const CartProvider = ({ children }) => {
         console.log(product.id);
         const cartId = response.data.length;
         const autocartId = cartId + 1;
-
-
-
-
         try {
             if (checkId) {
                 const newCard = { ...checkId, quantity: checkId.quantity };
                 console.log(`Product with ID ${newCard.quantity} already exists in the cart`);
+                console.log(newCard.quantity)
                 newCard.quantity += 1;
-                const res = await fetch(`${BASE_URL}/carts/${cartId}`, {
+                console.log(newCard);
+                const res = await fetch(`${BASE_URL}/carts/${newCard.id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -82,7 +80,6 @@ export const CartProvider = ({ children }) => {
         } catch (error) {
             console.error(`Error adding card product: ${error}`);
         }
-
         setCart([...cart, product]);
     };
 

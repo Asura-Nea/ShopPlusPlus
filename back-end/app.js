@@ -4,6 +4,7 @@ import connectToDB from './db/index.js';
 import 'dotenv/config'
 import mongoose from 'mongoose';
 import product from './routes/product/index.js';
+import auth from './routes/auth/index.js';
 
 
 const app = express();
@@ -61,9 +62,9 @@ app.post('/carts', async (req, res) => {
     }
 });
 
-app.put('/carts/:cartId', async (req, res) => {
+app.put('/carts/:id', async (req, res) => {
     try {
-        const cardId = req.params.cartId; // Ensure this matches the custom id field in your schema
+        const cardId = req.params.id; // Ensure this matches the custom id field in your schema
         const updateResult = await Carts.updateOne(
             { id: cardId }, // Use the custom 'id' field instead of '_id'
             {
@@ -93,6 +94,7 @@ app.put('/carts/:cartId', async (req, res) => {
 });
 
 app.use('/product', product);
+app.use('/auth', auth);
 
 Promise.all([connectToDB()])
     .then(() =>

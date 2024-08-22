@@ -12,6 +12,7 @@ import Profile from './page/profile/profile.jsx';
 import Tracing from './page/tracing/tracking.jsx';
 import Footer from './components/footer/footer';
 import Login from './page/login/login';
+import SignUp from './page/signUp/signUp.jsx';
 import { CartProvider } from './api/addtocart.jsx';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route path='profile' element={<Profile />} />
               <Route path='tracing' element={<Tracing />} />
               <Route path='login' element={<Login />} />
+              <Route path='signup' element={<SignUp />} />
             </Route>
 
           </Routes>
