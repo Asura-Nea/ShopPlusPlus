@@ -1,5 +1,6 @@
 import { register } from "../../api/login"
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 
 export default function SignUp() {
@@ -8,6 +9,7 @@ export default function SignUp() {
     const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
+    const navigate = useNavigate();
 
 
     return (
@@ -24,8 +26,8 @@ export default function SignUp() {
                         e.preventDefault();
                         try {
                             await register(username, email, password, address, phoneNumber);
-                            alert('Registration successful!');
-                            // Or update some feedback state variable
+                            alert('Registration successful!'); // Or update some feedback state variable
+                            navigate('/login');
                         } catch (error) {
                             console.error('Registration failed:', error);
                             alert('Registration failed.'); // Or update some feedback state variable

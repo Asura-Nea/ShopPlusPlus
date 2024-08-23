@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { login } from "../../api/login";
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function Example() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission
         try {
             const response = await login(email, password);
             console.log(response); // Handle successful login, e.g., navigate to another page
+            alert('Login successful!');
+            navigate('/'); // Navigate to home page upon successful login
+
         } catch (error) {
             console.error('Login failed:', error); // Handle login failure
+            alert('Login failed. Please check your credentials and try again.');
         }
     };
     return (
@@ -80,7 +85,7 @@ export default function Example() {
                                 type="submit"
                                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Sign in
+                                login
                             </button>
                         </div>
                     </form>

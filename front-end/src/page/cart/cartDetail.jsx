@@ -3,6 +3,7 @@ import { useCart } from "../../api/addtocart";
 
 export default function CartDetail() {
     const { cart } = useCart();
+    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
 
     return (
@@ -59,7 +60,7 @@ export default function CartDetail() {
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div className="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$262.00</p>
+                    <p> {total}$</p>
                 </div>
                 <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                 <div className="mt-6">
@@ -75,6 +76,7 @@ export default function CartDetail() {
                         or{' '}
                         <button
                             type="button"
+                            onClick={() => window.location.href = '/'}
                             className="font-medium text-indigo-600 hover:text-indigo-500"
                         >
                             Continue Shopping

@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from "react";
 function Cart() {
     const { cart } = useCart();
     const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef(null);
 
@@ -49,7 +50,7 @@ function Cart() {
                 <div className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow">
                     <div className="card-body">
                         <span className="text-lg font-bold">{totalQuantity} Items</span>
-                        <span className="text-info">Subtotal: $999</span>
+                        <span className="text-info">Subtotal: {cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}$</span>
                         <Link
                             to="/cart"
                             className="btn btn-primary btn-block"

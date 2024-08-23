@@ -1,9 +1,45 @@
 import profile from "../../assets/11123.jpeg";
+import { useState, useEffect } from 'react';
+import { getUserData } from "../../api/login";
+
+
 const Profile = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userData, setUserData] = useState({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        address: ""
+    });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getUserData();
+                if (data) {
+                    setUserData(data);
+                    setIsLoggedIn(true);
+                } else {
+                    setIsLoggedIn(false);
+                }
+            } catch (error) {
+                console.error("Failed to fetch user data:", error);
+                setIsLoggedIn(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic here
+    };
+
     return (
         <main className="flex overflow-hidden bg-white">
             <div className="flex-1 hidden lg:block ">
-                <img src={profile} className="w-full h-screen object-cover" />
+                <img src={profile} className="w-full h-screen object-cover" alt="Profile" />
             </div>
             <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
                 <div className="max-w-lg flex-1 mx-auto px-4 text-gray-600">
@@ -13,7 +49,7 @@ const Profile = () => {
                         </h3>
                     </div>
                     <form
-                        onSubmit={(e) => e.preventDefault()}
+                        onSubmit={handleSubmit}
                         className="space-y-5 mt-12 lg:pb-12"
                     >
                         <div>
@@ -23,7 +59,8 @@ const Profile = () => {
                             <input
                                 type="text"
                                 placeholder="ASURA"
-                                readOnly
+                                value={isLoggedIn ? userData.name : ""}
+                                readOnly={isLoggedIn}
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
                             />
                         </div>
@@ -34,7 +71,8 @@ const Profile = () => {
                             <input
                                 type="email"
                                 placeholder="support@example.com"
-                                readOnly
+                                value={isLoggedIn ? userData.email : ""}
+                                readOnly={isLoggedIn}
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
                             />
                         </div>
@@ -45,7 +83,8 @@ const Profile = () => {
                             <input
                                 type="tel"
                                 placeholder="999-999-999"
-                                readOnly
+                                value={isLoggedIn ? userData.phoneNumber : ""}
+                                readOnly={isLoggedIn}
                                 className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                             />
                         </div>
@@ -54,7 +93,8 @@ const Profile = () => {
                                 Address
                             </label>
                             <textarea
-                                readOnly
+                                readOnly={isLoggedIn}
+                                value={isLoggedIn ? userData.address : ""}
                                 placeholder="Beach, Kompot, Cambodia"
                                 className="w-full mt-2 h-36 px-3 py-2 resize-none appearance-none bg-transparent outline-none border focus:border-gray-800 shadow-sm rounded-lg"
                             >
@@ -63,7 +103,7 @@ const Profile = () => {
                         <button
                             className="w-full px-4 py-2 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-lg duration-150"
                         >
-                            Update Profile
+                            {isLoggedIn ? "Update Profile" : "Create Profile"}
                         </button>
                     </form>
                 </div>

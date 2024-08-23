@@ -11,6 +11,7 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await getCartData();
@@ -33,6 +34,8 @@ export const CartProvider = ({ children }) => {
         console.log(product.id);
         const cartId = response.data.length;
         const autocartId = cartId + 1;
+        // After updating the cart, calculate the total price
+
         try {
             if (checkId) {
                 const newCard = { ...checkId, quantity: checkId.quantity };
@@ -81,10 +84,11 @@ export const CartProvider = ({ children }) => {
             console.error(`Error adding card product: ${error}`);
         }
         setCart([...cart, product]);
+
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart }}>
+        <CartContext.Provider value={{ cart, addToCart, }}>
             {children}
         </CartContext.Provider>
     );
