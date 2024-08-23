@@ -1,11 +1,28 @@
 import { Outlet, Link } from "react-router-dom";
 import './navbar.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Cart from "../cart/card";
 import Profile from "../profile/profle";
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userData, setUserData] = useState({ isAdmin: false }); // Default to not being an admin
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (token !== null) {
+            setIsLoggedIn(true);
+            if (user) {
+                setUserData(user);
+                // Assuming the user object has an isAdmin property
+                setUserData(prevState => ({ ...prevState, isAdmin: user.isAdmin }));
+            }
+        }
+    }, []);
+
 
     // Step 2: Create Event Handlers
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -41,6 +58,15 @@ export const Navbar = () => {
                                 <li><Link to="/accessories" onClick={closeMenu}><h1>Accessories</h1></Link></li>
                                 <li><Link to="/aboutus" onClick={closeMenu}><h1>About Us</h1></Link></li>
                                 <li><Link to="/contactus" onClick={closeMenu}><h1>Contact Us</h1></Link></li>
+                                {isLoggedIn && (
+                                    <>
+                                        {userData.isAdmin && (
+                                            <>
+                                                <li><Link to="/addproduct" onClick={closeMenu}><h1>Add Product</h1></Link></li>
+                                            </>
+                                        )}
+                                    </>
+                                )}
                             </ul>
                         )}
                     </div>
@@ -62,6 +88,15 @@ export const Navbar = () => {
                         <li>
                             <Link to="/contactus">  <h1>Contact Us</h1> </Link>
                         </li>
+                        {isLoggedIn && (
+                            <>
+                                {userData.isAdmin && (
+                                    <>
+                                        <li><Link to="/addproduct"><h1>Add Product</h1></Link></li>
+                                    </>
+                                )}
+                            </>
+                        )}
                     </ul>
                 </div>
                 <div className="navbar-end">

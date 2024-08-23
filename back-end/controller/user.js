@@ -76,10 +76,11 @@ export const loginUser = async ({ email, password }) => {
             name: user.name,
             email: user.email,
             address: user.address,
-            phoneNumber: user.phoneNumber
+            phoneNumber: user.phoneNumber,
+            isAdmin: user.isAdmin
         });
         return Promise.resolve({
-            user: { id: user._id, name: user.name, email: user.email, lastLoggedIn: user.lastLoggedIn, address: user.address, phoneNumber: user.phoneNumber },
+            user: { id: user._id, name: user.name, email: user.email, lastLoggedIn: user.lastLoggedIn, address: user.address, phoneNumber: user.phoneNumber, isAdmin: user.isAdmin },
             token,
         });
     } catch (error) {
