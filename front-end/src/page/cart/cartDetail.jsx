@@ -2,7 +2,7 @@
 import { useCart } from "../../api/addtocart";
 
 export default function CartDetail() {
-    const { cart } = useCart();
+    const { cart, removeCartItem } = useCart();
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
 
@@ -44,7 +44,7 @@ export default function CartDetail() {
                                             <p className="text-gray-500">Qty {product.quantity}</p>
 
                                             <div className="flex">
-                                                <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                                <button onClick={() => removeCartItem(product.id)} type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
                                                     Remove
                                                 </button>
                                             </div>

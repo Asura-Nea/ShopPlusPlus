@@ -100,12 +100,36 @@ export const CartProvider = ({ children }) => {
         } catch (error) {
             console.error(`Error adding card product: ${error}`);
         }
+
+
         setCart([...cart, product]);
 
     };
+    const removeCartItem = async (itemId) => {
+        try {
+            const res = await fetch(`${BASE_URL}/carts/${itemId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (!res.ok) {
+                throw new Error(`HTTP error! status: ${res.status}`);
+            }
+
+            const data = await res.json();
+            console.log("Cart item removed successfully:", data);
+            // Update the local state to reflect the removal
+            setCart(cart.filter(item => item.id !== itemId));
+        } catch (error) {
+            console.error(`Error removing cart item: ${error}`);
+        }
+    };
+
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, }}>
+        <CartContext.Provider value={{ cart, addToCart, removeCartItem }}>
             {children}
         </CartContext.Provider>
     );
