@@ -1,9 +1,6 @@
 import PropTypes from "prop-types";
 import { StarIcon } from '@heroicons/react/20/solid'
 import { useCart } from "../../api/addtocart";
-// import { useEffect, useState } from "react";
-
-
 
 
 const reviews = { href: '#', average: 0, totalCount: 117 }
@@ -11,9 +8,12 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
 }
 
+
 const CardProduct = ({ id, imageAlt, imageSrc, name, price, star, model }) => {
     const { addToCart } = useCart();
+
     const handleAddToCart = () => {
+
         addToCart({ id, imageAlt, imageSrc, name, price, model });
     };
 

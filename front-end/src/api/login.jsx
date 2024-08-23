@@ -3,32 +3,6 @@ import axios from 'axios';
 const BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
 
 
-// Assuming the token is stored in localStorage after login
-const getTokenFromLocalStorage = () => localStorage.getItem('token');
-console.log("aaaaaaa" + getTokenFromLocalStorage());
-
-export const getUserData = async () => {
-    try {
-        // Retrieve the token from local storage
-        const token = getTokenFromLocalStorage();
-
-        // Make a GET request to fetch user data, assuming the endpoint requires a token for authorization
-        const userDataRes = await axios.get(`${BASE_URL}/auth/getUser`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-
-        // Store user data in local storage if needed
-        localStorage.setItem('userData', JSON.stringify(userDataRes.data));
-
-        return userDataRes.data; // Return the user data
-    } catch (error) {
-        console.error("Error fetching user data:", error);
-        throw error;
-    }
-};
-
 
 export const login = async (email, password, address, phoneNumber) => {
 
@@ -61,6 +35,21 @@ export const register = async (name, email, password, address, phoneNumber) => {
         return res.data;
     } catch (error) {
         console.error("Error signing up:", error);
+        throw error;
+    }
+}
+
+export const fetchUserDetails = async () => {
+    try {
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`${BASE_URL}/auth/me`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return res.data; // This will contain the user's details
+    } catch (error) {
+        console.error("Error fetching user details:", error);
         throw error;
     }
 }

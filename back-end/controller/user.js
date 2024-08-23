@@ -1,5 +1,8 @@
 import User from '../model/user.js';
 import jwt from 'jsonwebtoken';
+
+export const getFlaggedUser = () => Post.find({ isAdmin: false }).populate('user', 'name _id');
+
 const sign = (obj) =>
     new Promise((resolve, reject) => {
         jwt.sign(obj, process.env.jwtPrivateKey, (error, token) => {

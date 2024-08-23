@@ -1,6 +1,6 @@
 import profile from "../../assets/11123.jpeg";
 import { useState, useEffect } from 'react';
-import { getUserData } from "../../api/login";
+import { fetchUserDetails } from "../../api/login";
 
 
 const Profile = () => {
@@ -15,7 +15,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getUserData();
+                const data = await fetchUserDetails();
                 if (data) {
                     setUserData(data);
                     setIsLoggedIn(true);
