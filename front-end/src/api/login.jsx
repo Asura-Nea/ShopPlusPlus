@@ -2,8 +2,6 @@ import axios from 'axios';
 
 const BASE_URL = import.meta.env.VITE_APP_API_BASE_URL;
 
-
-
 export const login = async (email, password, address, phoneNumber) => {
 
     try {
@@ -16,6 +14,7 @@ export const login = async (email, password, address, phoneNumber) => {
 
         });
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
         return res.data;
     } catch (error) {
         console.error("Error logging in:", error);
@@ -32,6 +31,7 @@ export const register = async (name, email, password, address, phoneNumber) => {
             address,
             phoneNumber
         });
+
         return res.data;
     } catch (error) {
         console.error("Error signing up:", error);
@@ -39,31 +39,12 @@ export const register = async (name, email, password, address, phoneNumber) => {
     }
 }
 
-export const fetchUserDetails = async () => {
+export const logout = async () => {
     try {
-        const token = localStorage.getItem('token');
-        const res = await axios.get(`${BASE_URL}/auth/me`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        return res.data; // This will contain the user's details
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
     } catch (error) {
-        console.error("Error fetching user details:", error);
+        console.error("Error logging out:", error);
         throw error;
     }
 }
-
-
-
-
-// export const getAccessoriesData = async (accessoriesData) => {
-//     try {
-//         const config = { params: accessoriesData };
-//         const response = await axios.get(`${BASE_URL}/product/accessories`, config);
-//         return response.data;
-//     } catch (error) {
-//         console.error("Error fetching accessories:", error);
-//         throw error;
-//     }
-// };

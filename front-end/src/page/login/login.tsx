@@ -15,6 +15,7 @@ export default function Example() {
             console.log(response); // Handle successful login, e.g., navigate to another page
             alert('Login successful!');
             navigate('/'); // Navigate to home page upon successful login
+            window.location.reload();
 
         } catch (error) {
             console.error('Login failed:', error); // Handle login failure

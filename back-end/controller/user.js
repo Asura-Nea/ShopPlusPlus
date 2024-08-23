@@ -1,8 +1,6 @@
 import User from '../model/user.js';
 import jwt from 'jsonwebtoken';
 
-export const getFlaggedUser = () => Post.find({ isAdmin: false }).populate('user', 'name _id');
-
 const sign = (obj) =>
     new Promise((resolve, reject) => {
         jwt.sign(obj, process.env.jwtPrivateKey, (error, token) => {
@@ -77,9 +75,11 @@ export const loginUser = async ({ email, password }) => {
             id: user._id,
             name: user.name,
             email: user.email,
+            address: user.address,
+            phoneNumber: user.phoneNumber
         });
         return Promise.resolve({
-            user: { id: user._id, name: user.name, lastLoggedIn: user.lastLoggedIn },
+            user: { id: user._id, name: user.name, email: user.email, lastLoggedIn: user.lastLoggedIn, address: user.address, phoneNumber: user.phoneNumber },
             token,
         });
     } catch (error) {

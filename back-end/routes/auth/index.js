@@ -13,6 +13,7 @@ const router = Router();
 
 router.post('/login', loginUserValidation, login);
 router.post('/signup', signUpUserValidation, signup);
+
 // router.get('/user', getUser);
 router.post('/verify', jwtValidation, verify);
 

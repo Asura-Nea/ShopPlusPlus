@@ -1,15 +1,29 @@
-import moment from 'moment';
-import { getFlaggedUser } from '../../controller/user.js';
+import mongoose from 'mongoose';
+
+const usersSchema = new mongoose.Schema({
+    id: String,
+    name: String,
+    model: String,
+    year: Number,
+    price: Number,
+    imageSrc: String,
+    imageAlt: String,
+    description: String,
+    star: Number
+});
+
+const users = mongoose.model('accessories', userSchema);
 
 export default async (req, res) => {
     try {
-        const getUser = await getFlaggedUser();
-        res.send(user), {
-            user: req.session.user.name,
-            lastLoggedIn: moment(req.session.user.lastLoggedIn).format('MMMM Do YYYY, h:mm:ss a'),
-            posts: getPosts,
-        };
-    } catch (error) {
-        res.send('There was an error rendering the page!');
+        console.log('user');
+        const User = await users.find({}).exec();
+        res.send(User);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
     }
-};
+}
+
+
+

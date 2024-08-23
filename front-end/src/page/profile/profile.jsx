@@ -1,41 +1,31 @@
 import profile from "../../assets/11123.jpeg";
 import { useState, useEffect } from 'react';
-import { fetchUserDetails } from "../../api/login";
+// import { login } from "../../api/login";
 
 
 const Profile = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [userData, setUserData] = useState({
-        name: "",
-        email: "",
-        phoneNumber: "",
-        address: ""
-    });
+    const [userData, setUserData] = useState(null);
 
+    // Simulate checking if the user is logged in
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await fetchUserDetails();
-                if (data) {
-                    setUserData(data);
-                    setIsLoggedIn(true);
-                } else {
-                    setIsLoggedIn(false);
-                }
-            } catch (error) {
-                console.error("Failed to fetch user data:", error);
-                setIsLoggedIn(false);
-            }
-        };
+        // Replace this with actual logic to check if the user is logged in
+        const isLoggedIn = localStorage.getItem('token') !== null;
+        setIsLoggedIn(isLoggedIn);
 
-        fetchData();
+        if (isLoggedIn) {
+            const storedUser = JSON.parse(localStorage.getItem('user'));
+            console.log(storedUser);
+            if (storedUser) {
+                setUserData(storedUser);
+            }
+        }
     }, []);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // Implement form submission logic here
     };
-
     return (
         <main className="flex overflow-hidden bg-white">
             <div className="flex-1 hidden lg:block ">

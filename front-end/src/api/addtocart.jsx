@@ -10,7 +10,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,13 +21,30 @@ export const CartProvider = ({ children }) => {
         fetchData();
     }, []);
 
+    // Function to check if user is logged in
+    const checkLoginStatus = () => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    };
+
+    useEffect(() => {
+        checkLoginStatus();
+    }, []);
+
     const quantity = 1;
     const addToCart = async (product) => {
         // Logic to add product to cart
         // This could involve calling an API and then updating local state
         // For simplicity, we'll just update the local state here
 
-
+        if (!isLoggedIn) {
+            alert("Please log in to add items to your cart.");
+            return; // Exit the function if not logged in
+        }
         const response = await axios.get(`${BASE_URL}/carts`);
 
         const checkId = response.data.find((item) => item.id === product.id);

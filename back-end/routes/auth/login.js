@@ -5,6 +5,7 @@ export default async (req, res) => {
         console.log("GET /login");
         const { email, password } = req.body;
         const { user, token } = await loginUser({ email, password });
+        console.log("user", user);
         res.json({ user, token });
     } catch (error) {
         console.log("nooooooooo /login");
