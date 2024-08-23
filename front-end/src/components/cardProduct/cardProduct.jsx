@@ -15,8 +15,8 @@ const CardProduct = ({ id, imageAlt, imageSrc, name, price, star, model }) => {
     const handleAddToCart = () => {
 
         addToCart({ id, imageAlt, imageSrc, name, price, model });
-    };
 
+    };
     console.log(`Rendering product with name: ${id}`);
     return (
         <div key={id} className="card bg-base-100 w-100 shadow-xl text-card-font">

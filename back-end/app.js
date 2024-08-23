@@ -93,6 +93,22 @@ app.put('/carts/:id', async (req, res) => {
     }
 });
 
+app.delete('/carts/:id', async (req, res) => {
+    try {
+        const deletedCart = await Carts.deleteOne({ id: req.params.id }).exec();
+        if (!deletedCart.deletedCount) {
+            return res.status(404).json({ message: 'Cart item not found' });
+        }
+        // Retrieve and return the deleted cart's data
+        const deletedData = await Carts.findOne({ id: req.params.id }).lean().exec();
+        res.status(200).json(deletedData);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
 
 
 app.use('/product', product);

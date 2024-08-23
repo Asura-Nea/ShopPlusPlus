@@ -24,6 +24,10 @@ export default function SignUp() {
                 <div className="bg-white shadow p-4 py-6 sm:p-6 sm:rounded-lg">
                     <form onSubmit={async (e) => {
                         e.preventDefault();
+                        if (password.length < 8) {
+                            alert('Password must be at least 8 characters long.');
+                            return; // Exit the function early to prevent further execution
+                        }
                         try {
                             await register(username, email, password, address, phoneNumber);
                             alert('Registration successful!'); // Or update some feedback state variable

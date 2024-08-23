@@ -5,10 +5,7 @@ export default function CartDetail() {
     const { cart, removeCartItem } = useCart();
     const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-
     return (
-
-
 
         <div className="flex h-full flex-col overflow-y-scroll bg-white">
             <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-52">
